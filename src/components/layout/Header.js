@@ -6,7 +6,8 @@ class Header extends React.Component {
         super(props);
         this.state = {
             auth: this.props.auth,
-            user: this.props.user
+            user: this.props.user,
+            cart_items: this.props.count
         };
     }
 
@@ -22,6 +23,13 @@ class Header extends React.Component {
     }
 
     render() {
+        let usericon
+        if(this.state.auth === "true"){
+            usericon = <a>Hello {this.state.user}!</a>
+        }else{
+            usericon = <a>Hello Guest!</a>
+        }
+
         return (
             <div>
                 <div className="site-mobile-menu">
@@ -51,11 +59,15 @@ class Header extends React.Component {
                                     <li><a>Home</a></li>
                                     <li><a>About</a></li>
                                     <li><a></a></li>
-                                    <li><a>Sign In</a></li>
-                                    <li><a>Sign Up</a></li>
+                                    {
+                                        this.state.auth === "true" ? <li><a>Sign Out</a></li> :
+                                        <li><a>Sign In</a></li>
+                                    }
+                                    
                                 </ul>
                                 <div className="menu-icons">
-                                    <a href="#" className="user-profile">
+                                    {usericon}
+                                    <a className="ml-1 user-profile">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-person"
                                              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -64,7 +76,11 @@ class Header extends React.Component {
                                     </a>
 
                                     <a href="cart.html" className="cart">
-                                        <span className="item-in-cart">2</span>
+                                        {
+                                            this.state.cart_items > 0 ? <span className="item-in-cart">{this.state.cart_items}</span> :
+                                            null
+                                        }
+                                        
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-cart"
                                              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
