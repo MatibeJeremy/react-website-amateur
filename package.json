@@ -1,7 +1,7 @@
 {
   "name": "react-mutwiri",
   "version": "0.1.0",
-  "homepage": "http://matibejeremy.github.io/react-website-amateur ",
+  "homepage": "https://matibejeremy.github.io/react-website-amateur",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
